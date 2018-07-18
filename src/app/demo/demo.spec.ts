@@ -31,9 +31,10 @@ describe('demo (no TestBed):', () => {
     // why this fails?
 
     it('#getObservableDelayValue should return value from observable',
-      () => {
+      (done) => {
       service.getObservableDelayValue().subscribe(value => {
         expect(value).toBe('observable delay value1');
+        done();
       });
     });
 
