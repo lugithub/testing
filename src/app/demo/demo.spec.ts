@@ -22,18 +22,25 @@ describe('demo (no TestBed):', () => {
     });
 
     it('#getObservableValue should return value from observable',
-      (done: DoneFn) => {
+      () => {
       service.getObservableValue().subscribe(value => {
         expect(value).toBe('observable value');
-        done();
+      });
+    });
+
+    // why this fails?
+
+    it('#getObservableDelayValue should return value from observable',
+      () => {
+      service.getObservableDelayValue().subscribe(value => {
+        expect(value).toBe('observable delay value1');
       });
     });
 
     it('#getPromiseValue should return value from a promise',
-      (done: DoneFn) => {
-      service.getPromiseValue().then(value => {
-        expect(value).toBe('promise value');
-        done();
+      () => {
+      return service.getPromiseValue().then(value => {
+        expect(value).toBe('promise value');        
       });
     });
   });
